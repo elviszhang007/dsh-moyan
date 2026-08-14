@@ -1,6 +1,6 @@
 # 墨言（dsh-moyan）
 
-!墨言 / MoYan(https://github.com/elviszhang007/dsh-moyan/raw/master/Screenshots/FrontPage001.png) 
+![墨言 / MoYan](./Screenshots/FrontPage001.png)
 
 一个克制、安静的 DeepSeek Harness WebUI 插件：在左下角侧边栏「设置」按钮上方，完整显示一句名言、古诗词或游戏经典台词。
 
