@@ -1,0 +1,6 @@
+# dsh-moyan bundle patch: one loader row so the client-modules scanner
+# sees this package as a `dsh.client` (platform: web) plugin and serves its
+# browser half at /plugins/dsh-moyan/client.js.
+- insert:
+    - id: moyan
+      name: 'dsh-moyan'
