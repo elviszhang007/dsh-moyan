@@ -24,52 +24,49 @@
 ### 前置要求
 
 - Node.js ≥ 18；
-- pnpm（`dsh plugin` 内部把参数转发给 pnpm）；
-- DeepSeek Harness 可用：npm 全局安装后命令为 `dsh`，在源码仓库（monorepo）环境中命令为 `pnpm dsh`，二选一即可。
+- DeepSeek Harness (DSH) 已安装（全局或本地）
+- pnpm（若非全局安装，则需要用于解析依赖）；
 
-本插件是一个「树外插件」（profile 插件），通过 `dsh plugin` 安装。
+本插件为「树外插件」（profile 插件），通过 `dsh plugin` 安装。
 
-从本地目录安装：
+### 安装方式
+
+> 注意：安装前请确认DSH安装方式以使用下文中所有命令！
+> - 若为全局安装，**请去除 '(pnpm)'**。 --> 即 dsh...
+> - 否则请 **去除括号 '()'**，仅 **保留 'pnpm'**。 --> 即 pnpm dsh...
+
+**从本地目录安装：**
 
 ```sh
-pnpm dsh plugin --profile web add "D:\path\to\dsh-moyan"
+(pnpm) dsh plugin --profile web add ./dsh-moyan
 ```
 
-从本地目录安装（相对目录）：
+**从 GitHub 安装（可使用'#'选定版本）：**
+
+> 注意：请将命令中的版本（v0.5.x）改为实际需要的版本，例如 v0.5.2。
 
 ```sh
-pnpm dsh plugin --profile web add ./dsh-moyan
+(pnpm) dsh plugin --profile web add "git+https://github.com/elviszhang007/dsh-moyan.git#v0.5.x"
 ```
 
-或从 GitHub 安装，可用 tag 锁定版本：
+安装后请**重启 web profile**（插件集的变化在重启时生效），刷新页面：
 
 ```sh
-pnpm dsh plugin --profile web add "git+https://github.com/<owner>/dsh-moyan.git#v0.5.2"
-```
-
-从 GitHub 安装（且DSH为全局安装时）：
-
-```sh
-dsh plugin --profile web add git+https://github.com/elviszhang007/dsh-moyan.git#v0.5.1
-```
-
-> 注意：git URL 里的 `#` 在 PowerShell 中是注释符，**必须整条加引号**，否则 `#v0.5.0` 会被吞掉。
-
-安装后**重启 web profile**（插件集的变化在重启时生效），然后刷新页面：
-
-```sh
-pnpm dsh web
+(pnpm) dsh web
 ```
 
 ## 卸载
 
-按包名移除即可（与当初的安装来源无关），`dsh plugin` 会同时把插件从 profile 的 bundle 列表中剔除：
+### 卸载流程
 
+按包名移除：
 ```sh
-pnpm dsh plugin --profile web remove dsh-moyan
+(pnpm) dsh plugin --profile web remove dsh-moyan
 ```
 
-移除后重启 `dsh web`。插件在浏览器 localStorage 中留下了一个设置键（`dsh-moyan:v1`，只存刷新频率），如需彻底清除，在 WebUI 页面按 F12 打开控制台执行：
+### 清理痕迹
+
+插件在浏览器 localStorage 中留下了设置键（`dsh-moyan:v1`），如需清除，在 WebUI 页面按 F12 打开控制台执行：
 
 ```js
 localStorage.removeItem("dsh-moyan:v1")
