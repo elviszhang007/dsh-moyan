@@ -35,10 +35,22 @@
 pnpm dsh plugin --profile web add "D:\path\to\dsh-moyan"
 ```
 
+从本地目录安装（相对目录）：
+
+```sh
+pnpm dsh plugin --profile web add ./dsh-moyan
+```
+
 或从 GitHub 安装，可用 tag 锁定版本：
 
 ```sh
 pnpm dsh plugin --profile web add "git+https://github.com/<owner>/dsh-moyan.git#v0.5.2"
+```
+
+从 GitHub 安装（且DSH为全局安装时）：
+
+```sh
+dsh plugin --profile web add git+https://github.com/elviszhang007/dsh-moyan.git#v0.5.1
 ```
 
 > 注意：git URL 里的 `#` 在 PowerShell 中是注释符，**必须整条加引号**，否则 `#v0.5.0` 会被吞掉。
