@@ -1,5 +1,7 @@
 # 墨言（dsh-moyan）
 
+![墨言 MoYan](https://github.com/elviszhang007/dsh-moyan/blob/main/Screenshots/FrontPage001.png?raw=true)
+
 一个克制、安静的 DeepSeek Harness WebUI 插件：在左下角侧边栏「设置」按钮上方，完整显示一句名言、古诗词或游戏经典台词。
 
 > 路漫漫其修远兮，吾将上下而求索。
