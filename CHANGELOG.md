@@ -2,6 +2,14 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.5.2] - 2026-08-14
+
+### 文档
+
+- README 新增「卸载」章节（含 localStorage 残留清理说明）；
+- 安装章节补充前置要求（Node.js ≥ 18、pnpm、`dsh`/`pnpm dsh` 两种调用方式），示例 tag 更新为 `v0.5.2`；
+- 新增 PowerShell 提示：git URL 含 `#`，必须整条加引号。
+
 ## [0.5.1] - 2026-08-14
 
 ### 修复

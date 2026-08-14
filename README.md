@@ -1,6 +1,6 @@
 # 墨言（dsh-moyan）
 
-![墨言 MoYan](https://github.com/elviszhang007/dsh-moyan/blob/main/Screenshots/FrontPage001.png?raw=true)
+!墨言 / MoYan(https://github.com/elviszhang007/dsh-moyan/raw/master/Screenshots/FrontPage001.png) 
 
 一个克制、安静的 DeepSeek Harness WebUI 插件：在左下角侧边栏「设置」按钮上方，完整显示一句名言、古诗词或游戏经典台词。
 
@@ -21,9 +21,15 @@
 
 ## 安装
 
-本插件是一个「树外插件」（profile 插件），通过 `dsh plugin` 安装（该命令内部转发给 pnpm，需要本机已安装 pnpm）。
+### 前置要求
 
-从本地目录安装：（在您的DeepSeek Harness安装目录中启动终端）
+- Node.js ≥ 18；
+- pnpm（`dsh plugin` 内部把参数转发给 pnpm）；
+- DeepSeek Harness 可用：npm 全局安装后命令为 `dsh`，在源码仓库（monorepo）环境中命令为 `pnpm dsh`，二选一即可。
+
+本插件是一个「树外插件」（profile 插件），通过 `dsh plugin` 安装。
+
+从本地目录安装：
 
 ```sh
 pnpm dsh plugin --profile web add "D:\path\to\dsh-moyan"
@@ -32,13 +38,29 @@ pnpm dsh plugin --profile web add "D:\path\to\dsh-moyan"
 或从 GitHub 安装，可用 tag 锁定版本：
 
 ```sh
-pnpm dsh plugin --profile web add git+https://github.com/<owner>/dsh-moyan.git#v0.5.0
+pnpm dsh plugin --profile web add "git+https://github.com/<owner>/dsh-moyan.git#v0.5.2"
 ```
+
+> 注意：git URL 里的 `#` 在 PowerShell 中是注释符，**必须整条加引号**，否则 `#v0.5.0` 会被吞掉。
 
 安装后**重启 web profile**（插件集的变化在重启时生效），然后刷新页面：
 
 ```sh
 pnpm dsh web
+```
+
+## 卸载
+
+按包名移除即可（与当初的安装来源无关），`dsh plugin` 会同时把插件从 profile 的 bundle 列表中剔除：
+
+```sh
+pnpm dsh plugin --profile web remove dsh-moyan
+```
+
+移除后重启 `dsh web`。插件在浏览器 localStorage 中留下了一个设置键（`dsh-moyan:v1`，只存刷新频率），如需彻底清除，在 WebUI 页面按 F12 打开控制台执行：
+
+```js
+localStorage.removeItem("dsh-moyan:v1")
 ```
 
 ## 使用
