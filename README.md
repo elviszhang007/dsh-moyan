@@ -5,7 +5,7 @@
 > 路漫漫其修远兮，吾将上下而求索。
 > —— 屈原《离骚》
 
-句子自动折行、出处单列一行，绝不以省略号截断；整体风格与 Harness 原生的「设置」行保持一致。
+句子自动折行、出处单列一行；整体风格与 Harness 原生的「设置」行保持一致。
 
 ## 特性
 
@@ -21,28 +21,22 @@
 
 本插件是一个「树外插件」（profile 插件），通过 `dsh plugin` 安装（该命令内部转发给 pnpm，需要本机已安装 pnpm）。
 
-从本地目录安装：
+从本地目录安装：（在您的DeepSeek Harness安装目录中启动终端）
 
 ```sh
-dsh plugin --profile web add "D:\path\to\dsh-moyan"
+pnpm dsh plugin --profile web add "D:\path\to\dsh-moyan"
 ```
 
-从 GitHub 安装，可用 tag 锁定版本：
+或从 GitHub 安装，可用 tag 锁定版本：
 
 ```sh
-dsh plugin --profile web add git+https://github.com/<owner>/dsh-moyan.git#v0.5.0
-```
-
-发布到 npm 后：
-
-```sh
-dsh plugin --profile web add dsh-moyan
+pnpm dsh plugin --profile web add git+https://github.com/<owner>/dsh-moyan.git#v0.5.0
 ```
 
 安装后**重启 web profile**（插件集的变化在重启时生效），然后刷新页面：
 
 ```sh
-dsh web
+pnpm dsh web
 ```
 
 ## 使用

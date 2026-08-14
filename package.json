@@ -1,6 +1,6 @@
 {
   "name": "dsh-moyan",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "DeepSeek Harness 插件「墨言」：在 WebUI 侧边栏「设置」上方完整显示一句名言、诗词或游戏台词，语料可用 txt 直接编辑",
   "type": "module",
   "main": "lib/index.js",
