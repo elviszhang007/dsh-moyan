@@ -25,7 +25,7 @@
 
 - Node.js ≥ 18；
 - DeepSeek Harness (DSH) 已安装（全局或本地）
-- pnpm（若非全局安装，则需要用于解析依赖）；
+- pnpm（`dsh plugin` 内部依赖 pnpm 转发安装命令，两种安装方式均需要）；
 
 本插件为「树外插件」（profile 插件），通过 `dsh plugin` 安装。
 
