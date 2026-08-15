@@ -2,6 +2,13 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.5.3] - 2026-08-15
+
+### 文档
+
+- 首次发布到 npm（包名 `dsh-moyan`），README 安装章节新增「从 npm 安装」渠道并置为推荐方式；
+- GitHub 安装示例的版本号占位符说明更新为 `v0.5.3`。
+
 ## [0.5.2] - 2026-08-14
 
 ### 文档

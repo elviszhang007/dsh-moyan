@@ -43,10 +43,16 @@
 
 **从 GitHub 安装（可使用'#'选定版本）：**
 
-> 注意：请将命令中的版本（v0.5.x）改为实际需要的版本，例如 v0.5.2。
+> 注意：请将命令中的版本（v0.5.x）改为实际需要的版本，例如 v0.5.3。
 
 ```sh
 (pnpm) dsh plugin --profile web add "git+https://github.com/elviszhang007/dsh-moyan.git#v0.5.x"
+```
+
+**从 npm 安装（推荐）：**
+
+```sh
+(pnpm) dsh plugin --profile web add dsh-moyan
 ```
 
 安装后请**重启 web profile**（插件集的变化在重启时生效），刷新页面：
