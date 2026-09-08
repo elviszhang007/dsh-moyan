@@ -2,6 +2,13 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.6.0] - 2026-08-15
+
+### 变更
+
+- **适配 DeepSeek Harness 0.1.2-rc.1**：`slots` 改为客户端硬服务依赖（`inject: ["slots"]`），不再依赖 `ctx.get` 的加载时序；`dsh.client.inject` 边更新为 1.2 中存在的模块（移除已不存在的 `dsh-client-runtime`）。
+- 逐一核对了 1.2 的运行时契约：slot 声明与 owner props、模块加载器 seed、主题变量、宿主路由均无破坏性变化。
+
 ## [0.5.3] - 2026-08-15
 
 ### 文档

@@ -59,7 +59,7 @@ const api = handoff.factory((spec) => {
 });
 const T = api._test;
 assert.equal(typeof api.apply, "function");
-assert.deepEqual(api.inject, []);
+assert.deepEqual(api.inject, ["slots"]);
 
 // --- corpus sanity -------------------------------------------------------
 {
@@ -280,9 +280,6 @@ broken line without separator
 
 // --- apply() registration -------------------------------------------------
 {
-  // no slots service (e.g. non-web composition): quiet no-op
-  api.apply({ get: () => undefined });
-
   let registered = null;
   const fakeSlots = {
     inject: (name, callback) => {
@@ -293,7 +290,8 @@ broken line without separator
       registered = { options, component };
     },
   };
-  api.apply({ get: (name) => (name === "slots" ? fakeSlots : undefined) });
+  // `slots` is a hard service dependency: apply reaches it directly on ctx.
+  api.apply({ slots: fakeSlots });
   assert.ok(registered !== null, "register is called once the slot is declared");
   assert.equal(registered.options.name, "sidebar.footer.action");
   assert.equal(registered.options.id, "moyan");

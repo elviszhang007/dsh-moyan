@@ -136,7 +136,7 @@ dsh plugin --profile web add "D:\path\to\dsh-moyan"   # 重新安装/拷贝
 
 ## 兼容性
 
-在 DeepSeek Harness `0.1.0-rc.6` 上开发与验证。DSH 仍在快速演进，slot 名、主题变量名、client 模块契约可能随版本变化；升级 Harness 后如遇异常，请提 Issue 并注明 DSH 版本。
+在 DeepSeek Harness `0.1.2-rc.1` 上开发与验证（0.5.x 及更早版本适配 `0.1.0-rc.6`）。DSH 仍在快速演进，slot 名、主题变量名、client 模块契约可能随版本变化；升级 Harness 后如遇异常，请提 Issue 并注明 DSH 版本。
 
 ## 反馈
 
