@@ -2,6 +2,18 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.7.0] - 2026-09-08
+
+### 修复
+
+- **适配 DeepSeek Harness 0.2.0-rc.2（桌面版）**：图标命名在 0.2 中由尺寸后缀改为字重后缀（`IconSettingsOutline14` → `IconSettingsOutlineRegular`），旧名称取到 `undefined` 会让整块 UI 渲染崩溃；改为跨命名时代的图标解析器，任一时代的名称都能命中。
+
+### 变更
+
+- 图标缺失时降级为无图标的按钮（保留 `aria-label` 与悬停提示），而不是抛错中断渲染。
+- 移除 `dsh.client.inject` 包级边（0.2 起该边不再参与加载调度，实际时序由 `inject: ["slots"]` 保证）。
+- 文档：安装章节补充桌面版启动的是 `desktop` profile，需按 profile 名安装；兼容性声明更新为 0.2.0-rc.2。
+
 ## [0.6.0] - 2026-08-15
 
 ### 变更

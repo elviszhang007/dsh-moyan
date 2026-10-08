@@ -47,10 +47,12 @@ const hostApi = await import(pathToFileURL(join(here, "..", "lib", "index.js")).
 assert.equal(typeof hostApi.apply, "function");
 
 const reactStub = {};
+// DSH 0.2.x names icons by stroke weight; the stub mirrors the running shell.
 const primitivesStub = {
-  IconSettingsOutline14: () => null,
-  IconRefreshOutline14: () => null,
-  IconCloseFill14: () => null,
+  IconSettingsOutlineRegular: () => null,
+  IconRefreshOutlineRegular: () => null,
+  IconCloseFillRegular: () => null,
+  IconChevronLeftOutlineRegular: () => null,
 };
 const api = handoff.factory((spec) => {
   if (spec === "react") return reactStub;
@@ -60,6 +62,23 @@ const api = handoff.factory((spec) => {
 const T = api._test;
 assert.equal(typeof api.apply, "function");
 assert.deepEqual(api.inject, ["slots"]);
+
+// --- icon resolution across DSH naming eras -------------------------------
+{
+  assert.equal(typeof T.resolveIcon, "function");
+  const weightEra = { IconSettingsOutlineRegular: function regular() {} };
+  const sizeEra = { IconSettingsOutline14: function legacy() {} };
+  const both = { ...weightEra, ...sizeEra };
+  const candidates = ["IconSettingsOutlineRegular", "IconSettingsOutlineMedium", "IconSettingsOutline16", "IconSettingsOutline14"];
+
+  assert.equal(T.resolveIcon(weightEra, candidates).name, "regular", "0.2.x weight-suffixed name wins");
+  assert.equal(T.resolveIcon(sizeEra, candidates).name, "legacy", "0.1.x size-suffixed name still resolves");
+  assert.equal(T.resolveIcon(both, candidates).name, "regular", "the newer name is preferred when both exist");
+  assert.equal(T.resolveIcon({}, candidates), null, "a missing icon degrades to null");
+  assert.equal(T.resolveIcon(null, candidates), null, "a missing primitives module degrades to null");
+  assert.equal(T.resolveIcon(undefined, candidates), null, "an undefined primitives module degrades to null");
+  assert.equal(T.resolveIcon({ IconSettingsOutlineRegular: 42 }, candidates), null, "a non-component export is not used");
+}
 
 // --- corpus sanity -------------------------------------------------------
 {

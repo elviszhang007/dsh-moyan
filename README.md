@@ -35,6 +35,8 @@
 > - 若为全局安装，**请去除 '(pnpm)'**。 --> 即 dsh...
 > - 否则请 **去除括号 '()'**，仅 **保留 'pnpm'**。 --> 即 pnpm dsh...
 
+> **profile 名要选对**：桌面版（DeepSeek Harness 应用）启动的是 `desktop` profile，命令行 `dsh web` 启动的是 `web` profile。插件装在哪个 profile，就只在那个 profile 里出现。桌面版用户请把下文的 `--profile web` 换成 `--profile desktop`。
+
 **从本地目录安装：**
 
 ```sh
@@ -43,10 +45,10 @@
 
 **从 GitHub 安装（可使用'#'选定版本）：**
 
-> 注意：请将命令中的版本（v0.5.x）改为实际需要的版本，例如 v0.5.3。
+> 注意：请将命令中的版本（v0.7.x）改为实际需要的版本，例如 v0.7.0。
 
 ```sh
-(pnpm) dsh plugin --profile web add "git+https://github.com/elviszhang007/dsh-moyan.git#v0.5.x"
+(pnpm) dsh plugin --profile web add "git+https://github.com/elviszhang007/dsh-moyan.git#v0.7.x"
 ```
 
 **从 npm 安装（推荐）：**
@@ -55,7 +57,7 @@
 (pnpm) dsh plugin --profile web add dsh-moyan
 ```
 
-安装后请**重启 web profile**（插件集的变化在重启时生效），刷新页面：
+安装后请**重启 profile**（插件集的变化在重启时生效）：桌面版关闭应用后重新打开，命令行则重启 `dsh web`，然后刷新页面：
 
 ```sh
 (pnpm) dsh web
@@ -65,7 +67,7 @@
 
 ### 卸载流程
 
-按包名移除：
+按包名移除（profile 名同样要与安装时一致）：
 ```sh
 (pnpm) dsh plugin --profile web remove dsh-moyan
 ```
@@ -136,7 +138,7 @@ dsh plugin --profile web add "D:\path\to\dsh-moyan"   # 重新安装/拷贝
 
 ## 兼容性
 
-在 DeepSeek Harness `0.1.2-rc.1` 上开发与验证（0.5.x 及更早版本适配 `0.1.0-rc.6`）。DSH 仍在快速演进，slot 名、主题变量名、client 模块契约可能随版本变化；升级 Harness 后如遇异常，请提 Issue 并注明 DSH 版本。
+在 DeepSeek Harness `0.2.0-rc.2`（桌面版）上开发与验证；0.6.0 适配 `0.1.2-rc.1`，0.5.x 及更早适配 `0.1.0-rc.6`。DSH 仍在快速演进，slot 名、主题变量名、图标名与 client 模块契约都可能随版本变化；升级 Harness 后如遇异常，请提 Issue 并注明 DSH 版本与 profile 名。
 
 ## 反馈
 
